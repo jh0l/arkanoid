@@ -4,7 +4,6 @@ const Page = (props) => {
 }
 
 // canvas components goes here
-// It will receive same props as Page component (from getStaticProps, etc.)
-Page.r3f = (props) => <></>
+Page.r3f = (props) => <Game />
 
 export default Page
