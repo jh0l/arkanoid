@@ -10,7 +10,7 @@ const LControl = () => {
   useEffect(() => {
     if (control.current) {
       const domElement = dom.current
-      const originalTouchAction = domElement.style['touch-action'] 
+      const originalTouchAction = domElement.style['touch-action']
       domElement.style['touch-action'] = 'none'
 
       return () => {
@@ -26,6 +26,7 @@ const LCanvas = ({ children }) => {
 
   return (
     <Canvas
+      camera={{ position: [0, 5, 12], fov: 50 }}
       mode='concurrent'
       style={{
         position: 'absolute',

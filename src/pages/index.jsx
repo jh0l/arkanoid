@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 
-const Game = dynamic(() => '@/components/canvas/Game', {
+const Game = dynamic(() => import('@/components/canvas/Game'), {
   ssr: false,
 })
 
