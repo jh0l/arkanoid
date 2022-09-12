@@ -7,3 +7,5 @@ const Page = (props) => {
 Page.r3f = (props) => <Game />
 
 export default Page
+
+// GET STARTED HERE
