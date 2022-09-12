@@ -1,8 +1,9 @@
 {
-  "name": "react-three-next",
-  "version": "2.0.0",
+  "name": "arkanoid",
+  "version": "1.0.0",
   "authors": [
-    "Renaud ROHLINGER <https://twitter.com/onirenaud>"
+    "Renaud ROHLINGER <https://twitter.com/onirenaud>",
+    "Jack Hollis-London"
   ],
   "license": "MIT",
   "private": true,
@@ -21,6 +22,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.17.0",
+    "@react-three/cannon": "^6.4.0",
     "@react-three/drei": "^9.29.1",
     "@react-three/fiber": "^8.7.2",
     "babel-plugin-glsl": "^1.0.0",
