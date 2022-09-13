@@ -7,7 +7,7 @@ function Game() {
       <ambientLight intensity={0.3} />
       <pointLight position={[10, 10, 5]} />
       <pointLight position={[-10, -10, -5]} />
-      <Physics>
+      <Physics defaultContactMaterial={{ restitution: 1.1 }}>
         <Ball args={[0.5, 32, 32]} />
         <Paddle args={[2, 0.5, 1]} />
       </Physics>
