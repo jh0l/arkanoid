@@ -8,6 +8,8 @@ function Game() {
       <pointLight position={[10, 10, 5]} />
       <pointLight position={[-10, -10, -5]} />
       <Physics defaultContactMaterial={{ restitution: 1.1 }}>
+        <Enemy color='orange' position={[2, 1, 0]} />
+        <Enemy color='hotpink' position={[-2, 3, 0]} />
         <Ball args={[0.5, 32, 32]} />
         <Paddle args={[2, 0.5, 1]} />
       </Physics>
@@ -50,6 +52,16 @@ function Ball({ args }) {
     <mesh ref={ref}>
       <sphereGeometry args={args} />
       <meshStandardMaterial />
+    </mesh>
+  )
+}
+
+function Enemy({ args = [2, 0.5, 1], color, ...props }) {
+  const [ref] = useBox(() => ({ args, ...props }))
+  return (
+    <mesh ref={ref}>
+      <boxGeometry args={args} />
+      <meshStandardMaterial color={color} />
     </mesh>
   )
 }
