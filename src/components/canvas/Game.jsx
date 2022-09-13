@@ -36,7 +36,16 @@ function Paddle({ args }) {
 }
 
 function Ball({ args }) {
-  const [ref] = useSphere(() => ({ args: [0.5], mass: 1 }))
+  const [ref, api] = useSphere(() => ({ args: [0.5], mass: 1 }))
+  const { viewport } = useThree()
+  usePlane(() => ({
+    position: [0, -viewport.height, 0],
+    rotation: [-Math.PI / 2, 0, 0],
+    onCollide: () => {
+      api.position.set(0, 0, 0)
+      api.velocity.set(0, 10, 0)
+    },
+  }))
   return (
     <mesh ref={ref}>
       <sphereGeometry args={args} />
