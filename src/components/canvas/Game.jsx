@@ -1,3 +1,4 @@
+import useStore from '@/helpers/store'
 import { Physics, useBox, usePlane, useSphere } from '@react-three/cannon'
 import { useFrame, useThree } from '@react-three/fiber'
 
@@ -38,7 +39,13 @@ function Paddle({ args }) {
 }
 
 function Ball({ args }) {
-  const [ref, api] = useSphere(() => ({ args: [0.5], mass: 1 }))
+  const increaseScore = useStore((state) => state.increaseScore)
+  const resetScore = useStore((state) => state.resetScore)
+  const [ref, api] = useSphere(() => ({
+    onCollide: increaseScore,
+    args: [0.5],
+    mass: 1,
+  }))
   const { viewport } = useThree()
   usePlane(() => ({
     position: [0, -viewport.height, 0],
@@ -46,6 +53,7 @@ function Ball({ args }) {
     onCollide: () => {
       api.position.set(0, 0, 0)
       api.velocity.set(0, 10, 0)
+      resetScore()
     },
   }))
   return (

@@ -1,10 +1,13 @@
 import create from 'zustand'
 import shallow from 'zustand/shallow'
 
-const useStoreImpl = create(() => {
+const useStoreImpl = create((set) => {
   return {
     router: null,
     dom: null,
+    score: 0,
+    increaseScore: () => set((state) => ({ score: state.score + 1 })),
+    resetScore: () => set((z) => ({ score: 0 })),
   }
 })
 

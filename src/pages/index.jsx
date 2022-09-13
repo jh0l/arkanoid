@@ -1,3 +1,4 @@
+import useStore from '@/helpers/store'
 import dynamic from 'next/dynamic'
 
 const Game = dynamic(() => import('@/components/canvas/Game'), {
@@ -6,7 +7,8 @@ const Game = dynamic(() => import('@/components/canvas/Game'), {
 
 // dom components goes here
 const Page = () => {
-  return <></>
+  const score = useStore((state) => state.score)
+  return <h1 className='text-center font-bold text-xl'>{score}</h1>
 }
 
 // canvas components goes here
