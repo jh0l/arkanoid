@@ -1,5 +1,5 @@
-import { Physics, useBox } from '@react-three/cannon'
-import { useFrame } from '@react-three/fiber'
+import { Physics, useBox, usePlane, useSphere } from '@react-three/cannon'
+import { useFrame, useThree } from '@react-three/fiber'
 
 function Game() {
   return (
@@ -8,6 +8,7 @@ function Game() {
       <pointLight position={[10, 10, 5]} />
       <pointLight position={[-10, -10, -5]} />
       <Physics>
+        <Ball args={[0.5, 32, 32]} />
         <Paddle args={[2, 0.5, 1]} />
       </Physics>
     </>
@@ -30,6 +31,16 @@ function Paddle({ args }) {
     <mesh ref={ref}>
       <boxGeometry args={args} />
       <meshStandardMaterial color='lightblue' />
+    </mesh>
+  )
+}
+
+function Ball({ args }) {
+  const [ref] = useSphere(() => ({ args: [0.5], mass: 1 }))
+  return (
+    <mesh ref={ref}>
+      <sphereGeometry args={args} />
+      <meshStandardMaterial />
     </mesh>
   )
 }
